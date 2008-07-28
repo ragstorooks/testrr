@@ -65,6 +65,7 @@ along with TestRR.  If not, see <http://www.gnu.org/licenses/>.
 	<target name="copy">
 		<copy todir="${zip}/${ant.project.name}">
 			<fileset dir="${doc}" includes="COPYING*" />
+			<fileset dir="${doc}" includes="README" />
 		</copy>
 		<copy file="${build}/${ant.project.name}.jar" todir="${zip}/${ant.project.name}"/>
 	</target>
