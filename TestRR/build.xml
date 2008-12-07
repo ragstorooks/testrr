@@ -32,7 +32,7 @@ along with TestRR.  If not, see <http://www.gnu.org/licenses/>.
 	<property name="zip" value="${basedir}/zip" />
 	<property name="test" value="${basedir}/src/test" />
 	<property name="resources" value="${basedir}/src/properties" />
-	<property name="findbugs.home" value="C:/pe-build/trunk/reporting/etc/findbugs" />
+	<property name="findbugs.home" value="/opt/findbugs" />
 
 	<path id="project.classpath">
 		<pathelement location="${resources}"/>
@@ -45,7 +45,7 @@ along with TestRR.  If not, see <http://www.gnu.org/licenses/>.
 
 	<target name="develop" depends="clean, init, compile, test, findbugs, jar, copy, dist" />
 
-	<target name="distribute" depends="clean, init, compile, jar, copy, dist" />
+	<target name="distribute" depends="clean, init, compile, jar, copy, javadoc, dist" />
 
 	<dirname property="pwd" file="${ant.file}" />
 
@@ -152,6 +152,21 @@ along with TestRR.  If not, see <http://www.gnu.org/licenses/>.
 			<sourcePath path="${src}" />
 			<class location="${build}/classes/main"/>
 		</findbugs>
+	</target>
+
+	<target name="javadoc" >
+		<mkdir dir="${zip}/${ant.project.name}/docs/api"/>
+		<javadoc destdir="${zip}/${ant.project.name}/docs/api"	windowtitle="TestRR API">
+			<fileset dir="${basedir}/src/java">
+				<include name="com/ragstorooks/testrr/*.java"/>
+			</fileset>
+			<classpath>
+				<fileset dir="${basedir}/lib">
+					<include name="**/*.jar" />
+				</fileset>
+				<pathelement location="${basedir}/src/java"/>
+			</classpath>
+		</javadoc>
 	</target>
 
 	<target name="stampLabel" unless="label" >
