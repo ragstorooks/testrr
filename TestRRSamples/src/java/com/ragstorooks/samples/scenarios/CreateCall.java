@@ -24,10 +24,8 @@ public class CreateCall extends ScenarioBase implements CallListener {
 	public void run(String scenarioId) {
 		String callLeg1 = outboundCallLegBean.createCallLeg(URI.create("sip:app"), URI.create("sip:happy@127.0.0.1"));
 		String callLeg2 = outboundCallLegBean.createCallLeg(URI.create("sip:app"), URI.create("sip:happy@127.0.0.1"));
-		synchronized(lock) {
-			String callId = callBean.joinCallLegs(callLeg1, callLeg2);
-			scenarios.put(callId, scenarioId);
-		}
+		String callId = callBean.joinCallLegs(callLeg1, callLeg2);
+		scenarios.put(callId, scenarioId);
 	}
 
 	public void onCallConnected(CallConnectedEvent arg0) {

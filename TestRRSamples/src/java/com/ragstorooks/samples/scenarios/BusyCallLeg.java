@@ -25,10 +25,8 @@ public class BusyCallLeg extends ScenarioBase implements OutboundCallLegListener
 	@Override
 	public void run(String scenarioId) {
 		String callLegId = outboundCallLegBean.createCallLeg(URI.create("sip:app"), URI.create("sip:busy@127.0.0.1"));
-		synchronized(lock) {
-			outboundCallLegBean.connectCallLeg(callLegId);
-			scenarios.put(callLegId, scenarioId);
-		}
+		outboundCallLegBean.connectCallLeg(callLegId);
+		scenarios.put(callLegId, scenarioId);
 	}
 
 	public void onCallLegAlerting(CallLegAlertingEvent arg0) {
