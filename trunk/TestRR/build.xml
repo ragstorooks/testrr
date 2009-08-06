@@ -32,7 +32,9 @@ along with TestRR.  If not, see <http://www.gnu.org/licenses/>.
 	<property name="zip" value="${basedir}/zip" />
 	<property name="test" value="${basedir}/src/test" />
 	<property name="resources" value="${basedir}/src/properties" />
-	<property name="findbugs.home" value="/opt/findbugs" />
+    
+    <property file="properties/${user.name}.properties" />
+	<property file="properties/build.properties" />
 
 	<path id="project.classpath">
 		<pathelement location="${resources}"/>
