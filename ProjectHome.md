@@ -1,0 +1,4 @@
+TestRR is a very lightweight framework that can be used to test robustness and performance for Java applications. It is based on  the work done during the development of [Aloha](https://trac.osmosoft.com/Aloha) and is described in [this paper](http://submissions.agile2008.org/node/1929) at Agile2008.
+Two sample scenarios are also provided if you check out the source code. While the samples use [Spring](http://springframework.org) to run the robustness scenarios, the unit tests demonstrate how the application can be  run with plain Java code.
+
+Currently, the statistics provided at the end of the run are quite minimal. More statistics can easily be added to the project as and when required.
